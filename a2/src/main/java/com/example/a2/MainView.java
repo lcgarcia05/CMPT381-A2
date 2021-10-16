@@ -19,6 +19,7 @@ public class MainView extends BorderPane {
     private Rectangle rec3;
     private Label recentProj;
     private Label summary;
+    private MainModel model;
 
     public MainView(){
         VBox leftItems = new VBox(15);
@@ -27,6 +28,7 @@ public class MainView extends BorderPane {
         createButton = new Button("Create");
         projectButton = new Button("Projects");
         invoiceButton = new Button("Invoice");
+
         createButton.setFont(Font.font(24));
         projectButton.setFont(Font.font(24));
         invoiceButton.setFont(Font.font(24));
@@ -43,16 +45,15 @@ public class MainView extends BorderPane {
         rec3.setStroke(Color.BLACK);
         rec3.setFill(Color.TRANSPARENT);
 
-        calendar = new Label("Calendar");
-        recentProj = new Label("Recent Project");
-        summary = new Label("Summary");
+        calendar = new Label("Calendar\nTo be implemented");
+        recentProj = new Label("Recent Project\nTo be implemented");
+        summary = new Label("Summary\nTo be implemented");
 
 
         leftItems.setAlignment(Pos.CENTER);
         leftItems.getChildren().addAll(createButton,projectButton,invoiceButton);
 
         centerItems.getChildren().addAll(calendar,rec);
-        centerItems.setBorder(new Border(new BorderStroke(Color.BLACK, BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderWidths.DEFAULT)));
         centerItems.setAlignment(Pos.CENTER);
 
         rightItems.setAlignment(Pos.CENTER);
@@ -61,6 +62,16 @@ public class MainView extends BorderPane {
         this.setLeft(leftItems);
         this.setCenter(centerItems);
         this.setRight(rightItems);
+    }
+
+    public void setModel(MainModel newModel){
+        this.model = newModel;
+    }
+
+    public void setController(MainController newController){
+        createButton.setOnAction(newController::handleClick);
+        projectButton.setOnAction(newController::handleClick2);
+        invoiceButton.setOnAction(newController::handleClick3);
     }
 
 }

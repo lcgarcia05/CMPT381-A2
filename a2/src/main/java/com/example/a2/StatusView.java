@@ -4,8 +4,10 @@ import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
 
+/*
+    Discontinued because the views are stacking up.
+ */
 public class StatusView extends GridPane {
     private Label status;
     private Button startButton;
